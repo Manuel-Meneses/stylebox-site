@@ -1,66 +1,77 @@
-"use client"
+import { Factory, Zap, Ruler, ShieldCheck } from "lucide-react"
 
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-
-const stats = [
-  { value: "87", label: "Projects Completed" },
-  { value: "14", label: "International Awards" },
-  { value: "22", label: "Years of Practice" },
+const factoryFeatures = [
+  {
+    icon: <Factory className="w-10 h-10 mb-4 text-primary" />,
+    title: "Planta de 4.000 m²",
+    description: "Operamos en una superficie cubierta propia equipada con tecnología de punta. Somos fabricantes directos, lo que nos permite controlar cada milímetro del proceso."
+  },
+  {
+    icon: <Ruler className="w-10 h-10 mb-4 text-primary" />,
+    title: "Fabricación Integral",
+    description: "No tercerizamos. Producimos nuestras propias aberturas de aluminio, PVC y amoblamientos con mano de obra altamente especializada en cada etapa."
+  },
+  {
+    icon: <Zap className="w-10 h-10 mb-4 text-primary" />,
+    title: "Instalaciones Normalizadas",
+    description: "Las redes eléctricas y de agua se ejecutan exclusivamente con materiales bajo norma. Todo el sistema es rigurosamente verificado y probado en fábrica antes de despachar."
+  },
+  {
+    icon: <ShieldCheck className="w-10 h-10 mb-4 text-primary" />,
+    title: "Certificación y Seguridad",
+    description: "Garantizamos la máxima durabilidad de tu espacio. Todas las instalaciones son ejecutadas por especialistas calificados y se entregan con sus respectivos certificados."
+  }
 ]
 
-export function StudioSection() {
-  const { ref: headRef, isVisible: headVisible } = useScrollReveal(0.15)
-  const { ref: bodyRef, isVisible: bodyVisible } = useScrollReveal(0.1)
-
+export default function StudioSection() {
   return (
-    <section id="studio" className="px-6 py-28 md:px-12 lg:px-20 md:py-36 bg-foreground text-background">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-28">
-        <div
-          ref={headRef}
-          className={`transition-all duration-1000 ${
-            headVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <p className="text-[11px] tracking-[0.3em] uppercase text-background/40 mb-8">
-            About the Studio
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extralight leading-[1.15] tracking-tight text-balance">
-            We believe architecture is the most intimate form of public art
-          </h2>
-        </div>
+    <section id="la-fabrica" className="py-24 bg-white relative overflow-hidden">
+      {/* Fondo con patrón de grilla arquitectónica muy sutil */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+      </div>
 
-        <div
-          ref={bodyRef}
-          className={`flex flex-col justify-end gap-10 transition-all duration-1000 delay-200 ${
-            bodyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <div className="flex flex-col gap-6 max-w-lg">
-            <p className="text-sm leading-[1.75] text-background/55">
-              Founded in Stockholm in 2003, Voss Architects is a practice built on the conviction
-              that thoughtful design transforms not just spaces, but the lives unfolding within them.
-              Our work spans residential, cultural, and commercial projects across Scandinavia and
-              Northern Europe.
-            </p>
-            <p className="text-sm leading-[1.75] text-background/55">
-              Every project begins with listening. We study the site, the light, the way people
-              move through a space. From this understanding, we craft architecture that feels
-              both inevitable and surprising.
-            </p>
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          
+          {/* Columna Izquierda: Texto fijo (Sticky) */}
+          <div className="lg:w-1/3">
+            <div className="sticky top-24">
+              <span className="text-[#C2523A] font-bold tracking-widest uppercase text-sm mb-4 block">
+                Infraestructura
+              </span>
+              <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground leading-tight mb-6">
+                EL RESPALDO DE <br/>NUESTRA FÁBRICA.
+              </h2>
+              <p className="text-lg text-muted-foreground font-sans mb-8">
+                Un diseño moderno no es nada sin una ejecución impecable. Detrás de cada módulo Stylebox hay una cadena de producción estandarizada y materiales de calidad premium.
+              </p>
+              {/* Elemento visual decorativo de arquitectura */}
+              <div className="w-20 h-2 bg-[#C2523A]"></div>
+            </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 pt-10 border-t border-background/10">
-            {stats.map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl md:text-4xl font-extralight text-background tracking-tight">
-                  {stat.value}
-                </p>
-                <p className="text-[11px] tracking-[0.1em] uppercase text-background/35 mt-2">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
+         <div className="lg:w-2/3">
+            <div className="flex md:grid md:grid-cols-2 gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-8 -mx-4 px-4 md:mx-0 md:px-0 md:pb-0">
+              {factoryFeatures.map((feature, index) => (
+                <div key={index} className="group [perspective:1000px] w-[85vw] md:w-auto shrink-0 snap-center">
+                  <div className="bg-secondary p-8 h-full border border-border transition-all duration-500 ease-out 
+                                  md:group-hover:[transform:rotateX(5deg)_rotateY(-10deg)_translateY(-5px)_scale(1.02)] 
+                                  md:group-hover:shadow-[20px_20px_0px_0px_rgba(0,0,0,0.05)]
+                                  md:group-hover:border-primary/20">
+                    {feature.icon}
+                    <h3 className="text-xl font-heading font-bold text-foreground mb-3 uppercase tracking-wide">
+                      {feature.title}
+                    </h3>
+                    <p className="text-muted-foreground font-sans leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div> 
+
         </div>
       </div>
     </section>

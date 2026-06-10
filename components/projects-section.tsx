@@ -1,115 +1,108 @@
-"use client"
+import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Maximize, BedDouble, Bath, LayoutTemplate } from "lucide-react"
 
-import { useState } from "react"
-import { ArrowUpRight } from "lucide-react"
-import { useScrollReveal } from "@/hooks/use-scroll-reveal"
-
-const projects = [
-  {
-    title: "Nordheim Residence",
-    category: "Residential",
-    year: "2024",
-    location: "Oslo, Norway",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
-  },
-  {
-    title: "The Lund Pavilion",
-    category: "Cultural",
-    year: "2023",
-    location: "Lund, Sweden",
-    image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=1200&q=80",
-  },
-  {
-    title: "Aalto Commercial Tower",
-    category: "Commercial",
-    year: "2023",
-    location: "Helsinki, Finland",
-    image: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80",
-  },
-  {
-    title: "Bergman Cultural Centre",
-    category: "Cultural",
-    year: "2022",
-    location: "Copenhagen, Denmark",
-    image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200&q=80",
-  },
-]
-
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
-  const [hovered, setHovered] = useState(false)
-  const { ref, isVisible } = useScrollReveal(0.1)
-
+export default function ProjectsSection() {
   return (
-    <div
-      ref={ref}
-      className={`bg-background group cursor-pointer transition-all duration-700 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
-      style={{ transitionDelay: `${(index % 2) * 150}ms` }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div className="overflow-hidden">
-        <img
-          src={project.image || "/placeholder.svg"}
-          alt={`${project.title} - ${project.category} project in ${project.location}`}
-          className={`w-full aspect-[4/3] object-cover transition-all duration-[800ms] ease-out ${
-            hovered ? "scale-[1.04]" : "scale-100"
-          }`}
-        />
-      </div>
-      <div className="p-6 md:p-8 flex items-start justify-between">
-        <div className="flex items-start gap-4">
-          <span className="text-[11px] tracking-[0.15em] text-muted-foreground/50 mt-1.5 tabular-nums">
-            {String(index + 1).padStart(2, "0")}
-          </span>
+    <section id="proyectos" className="py-32 bg-zinc-950 text-white relative border-t border-zinc-800 overflow-hidden">
+      
+      {/* Brillo de fondo sutil con el color de la marca para quitar la "opacidad" plana */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C2523A] opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#C2523A] opacity-[0.03] blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
+        
+        {/* Cabecera */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <h3 className="text-lg md:text-xl font-light tracking-tight text-foreground mb-1.5">
-              {project.title}
-            </h3>
-            <p className="text-[11px] tracking-[0.1em] uppercase text-muted-foreground">
-              {project.category} / {project.location} / {project.year}
-            </p>
+            <span className="text-[#C2523A] font-bold tracking-widest uppercase text-sm mb-4 block">
+              Línea Residencial
+            </span>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold uppercase tracking-tight">
+              Modelo <span className="text-zinc-500">60</span>
+            </h2>
+          </div>
+          <p className="text-lg text-zinc-400 max-w-md font-sans">
+            Un diseño que optimiza los metros cuadrados, elimina pasillos y prioriza un área social de concepto completamente abierto.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* Columna Izquierda: Imagen del Proyecto */}
+          <div className="lg:col-span-7 relative group overflow-hidden border border-zinc-800 bg-zinc-900 min-h-[400px] lg:min-h-[600px]">
+            
+            {/* ACÁ VA TU IMAGEN. 
+              1. Guardá tu foto en la carpeta `public` (ej: /public/modelo60.jpg)
+              2. Cambiá el src por "/modelo60.jpg"
+            */}
+            <Image 
+              src="/ref-60.jpg" 
+              alt="Modelo 60 Metros Cuadrados - Stylebox"
+              fill
+              className="object-cover opacity-60 transition-transform duration-1000 group-hover:scale-105 group-hover:opacity-80 grayscale group-hover:grayscale-0"
+            />
+            
+            {/* Acento decorativo lineal en la foto */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C2523A] to-transparent opacity-50"></div>
+
+            <div className="absolute top-6 left-6 bg-zinc-950/90 backdrop-blur-md border border-zinc-800 p-4">
+              <p className="font-heading font-bold tracking-widest uppercase text-xs text-[#C2523A] mb-1">Configuración</p>
+              <p className="font-sans text-sm text-white">2 Módulos 40ft HC Unidos</p>
+            </div>
+          </div>
+
+          {/* Columna Derecha: Especificaciones Técnicas */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              {/* Tarjetas de datos con hover interactivo hacia el color de marca */}
+              <div className="group/card border border-zinc-800 p-6 flex flex-col items-start transition-all duration-300 hover:border-[#C2523A]/50 hover:bg-[#C2523A]/[0.02]">
+                <Maximize className="w-6 h-6 text-zinc-500 group-hover/card:text-[#C2523A] transition-colors mb-4" strokeWidth={1.5} />
+                <span className="text-2xl font-heading font-bold mb-1">12 x 4.8m</span>
+                <span className="text-xs text-zinc-500 uppercase tracking-wider">Dimensiones</span>
+              </div>
+              
+              <div className="group/card border border-zinc-800 p-6 flex flex-col items-start transition-all duration-300 hover:border-[#C2523A]/50 hover:bg-[#C2523A]/[0.02]">
+                <BedDouble className="w-6 h-6 text-zinc-500 group-hover/card:text-[#C2523A] transition-colors mb-4" strokeWidth={1.5} />
+                <span className="text-2xl font-heading font-bold mb-1">2 Dorm.</span>
+                <span className="text-xs text-zinc-500 uppercase tracking-wider">2.30 x 3.80m c/u</span>
+              </div>
+              
+              <div className="group/card border border-zinc-800 p-6 flex flex-col items-start transition-all duration-300 hover:border-[#C2523A]/50 hover:bg-[#C2523A]/[0.02]">
+                <Bath className="w-6 h-6 text-zinc-500 group-hover/card:text-[#C2523A] transition-colors mb-4" strokeWidth={1.5} />
+                <span className="text-2xl font-heading font-bold mb-1">Baño Res.</span>
+                <span className="text-xs text-zinc-500 uppercase tracking-wider">2.40 x 2.20m</span>
+              </div>
+              
+              <div className="group/card border border-zinc-800 p-6 flex flex-col items-start transition-all duration-300 hover:border-[#C2523A]/50 hover:bg-[#C2523A]/[0.02]">
+                <LayoutTemplate className="w-6 h-6 text-zinc-500 group-hover/card:text-[#C2523A] transition-colors mb-4" strokeWidth={1.5} />
+                <span className="text-2xl font-heading font-bold mb-1">Abierto</span>
+                <span className="text-xs text-zinc-500 uppercase tracking-wider">Living/Comedor</span>
+              </div>
+            </div>
+
+            {/* Bloque de Precio y CTA */}
+            <div className="bg-zinc-900 border border-zinc-800 p-8 flex flex-col gap-6 mt-auto relative overflow-hidden">
+              {/* Resplandor sutil detrás del precio */}
+              <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-[#C2523A] opacity-10 blur-2xl rounded-full"></div>
+              
+              <div className="relative z-10">
+                <p className="text-sm text-zinc-400 uppercase tracking-wider mb-2">Valor Referencial</p>
+                <p className="text-4xl md:text-5xl font-heading font-bold text-white">$50.000.000 <span className="text-lg text-zinc-500 font-sans font-normal">ARS</span></p>
+                <p className="text-xs text-zinc-500 mt-2">*Precio base sujeto a modificaciones. No incluye flete ni instalación.</p>
+              </div>
+              
+              <Button size="lg" className="relative z-10 w-full text-md uppercase tracking-wider rounded-none bg-[#C2523A] hover:bg-[#a3442f] text-white py-6 transition-colors" asChild>
+                <Link href="https://wa.me/5491166085926?text=Hola,%20quisiera%20consultar%20sobre%20el%20Modelo%2060%20de%20arquitectura%20modular." target="_blank" rel="noopener noreferrer">
+                  Solicitar Cotización Exacta
+                </Link>
+              </Button>
+            </div>
+
           </div>
         </div>
-        <ArrowUpRight
-          className={`h-4 w-4 text-muted-foreground/40 transition-all duration-300 mt-1.5 ${
-            hovered ? "translate-x-0.5 -translate-y-0.5 text-foreground" : ""
-          }`}
-        />
-      </div>
-    </div>
-  )
-}
-
-export function ProjectsSection() {
-  const { ref, isVisible } = useScrollReveal(0.05)
-
-  return (
-    <section id="projects" className="px-6 py-28 md:px-12 lg:px-20 md:py-36">
-      <div
-        ref={ref}
-        className={`flex flex-col md:flex-row md:items-end justify-between mb-20 pb-6 border-b border-border transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <div>
-          <p className="text-[11px] tracking-[0.3em] uppercase text-muted-foreground mb-3">
-            Selected Work
-          </p>
-          <h2 className="text-3xl md:text-[2.75rem] font-extralight tracking-tight text-foreground">
-            Projects
-          </h2>
-        </div>
-        <span className="text-[11px] tracking-[0.15em] text-muted-foreground/50 mt-4 md:mt-0">
-          ({String(projects.length).padStart(2, "0")}) Projects
-        </span>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
-        ))}
       </div>
     </section>
   )

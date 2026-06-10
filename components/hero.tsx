@@ -1,67 +1,63 @@
-"use client"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
-import { useEffect, useRef, useState } from "react"
-
-export function Hero() {
-  const [visible, setVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 200)
-    return () => clearTimeout(timer)
-  }, [])
-
+export default function Hero() {
   return (
-    <section ref={ref} className="relative h-screen flex flex-col justify-end overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1920&q=80"
-          alt="Modern concrete building with geometric facade"
-          className={`w-full h-full object-cover transition-transform duration-[2s] ease-out ${
-            visible ? "scale-100" : "scale-110"
-          }`}
-        />
-        <div className="absolute inset-0 bg-foreground/50" />
+    <section className="relative w-full h-screen min-h-[600px] flex items-center overflow-hidden">
+      
+      {/* 1. CONTENEDOR DEL VIDEO DE FONDO */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="w-full h-full object-cover"
+          poster="/bg-hero.jpg" 
+        >
+          <source src="https://videos.pexels.com/video-files/3206014/3206014-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+        </video>
+        
+        {/* 2. OVERLAY (Filtro oscuro para contraste) */}
+        <div className="absolute inset-0 bg-black/65 z-10"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 px-6 pb-16 md:px-12 lg:px-20 md:pb-20">
-        <div className="max-w-5xl">
-          <div
-            className={`overflow-hidden mb-6 transition-all duration-1000 delay-500 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
-          >
-            <p className="text-[11px] tracking-[0.3em] uppercase text-background/50">
-              Est. 2003 — Stockholm & Copenhagen
-            </p>
-          </div>
-
-          <div
-            className={`transition-all duration-1000 delay-700 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h1 className="text-[clamp(2.25rem,6vw,5.5rem)] font-extralight leading-[1.05] tracking-[-0.03em] text-background text-balance">
-              Architecture that shapes
-              <br className="hidden md:block" />
-              how we experience
-              <br className="hidden md:block" />
-              the world
-            </h1>
-          </div>
-        </div>
-
-        <div
-          className={`mt-16 md:mt-20 flex items-center gap-6 transition-all duration-1000 delay-1000 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="w-12 h-px bg-background/30" />
-          <span className="text-[11px] tracking-[0.2em] uppercase text-background/40">
-            Scroll to explore
+      {/* 3. CONTENIDO (Por encima del video, alineado a la izquierda) */}
+      <div className="relative z-20 container mx-auto px-4 md:px-8">
+        <div className="max-w-4xl flex flex-col items-start text-left">
+          
+          {/* Etiqueta superior */}
+          <span className="text-[#C2523A] font-bold tracking-widest uppercase text-sm mb-4 block">
+            Fabricantes Directos
           </span>
+          
+          {/* Título Principal */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6">
+            ARQUITECTURA MODULAR <br className="hidden md:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#C2523A]">PREMIUM</span>
+          </h1>
+          
+          {/* Subtítulo */}
+          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-sans">
+            Diseñamos y construimos espacios eficientes, modernos y listos para habitar. 
+            Respaldados por una planta de producción de 4.000 m² equipada con tecnología de punta.
+          </p>
+          
+          {/* Call to Action */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-start">
+            <Button size="lg" className="w-full sm:w-auto text-md uppercase tracking-wider rounded-none" asChild>
+              <Link href="#proyectos">
+                Ver Modelos
+              </Link>
+            </Button>
+            
+            <Button size="lg" variant="outline" className="w-full sm:w-auto text-md uppercase tracking-wider rounded-none text-white border-white hover:bg-white hover:text-black bg-transparent" asChild>
+              <Link href="https://wa.me/5491166085926" target="_blank" rel="noopener noreferrer">
+                Contactar Asesor
+              </Link>
+            </Button>
+          </div>
+          
         </div>
       </div>
     </section>

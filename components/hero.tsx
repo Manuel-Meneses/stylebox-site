@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import Reveal from "./reveal"
 
 export default function Hero() {
   return (
@@ -26,23 +27,26 @@ export default function Hero() {
       <div className="relative z-20 container mx-auto px-4 md:px-8">
         <div className="max-w-4xl flex flex-col items-start text-left">
           
-          {/* Etiqueta superior */}
-          <span className="text-[#C2523A] font-bold tracking-widest uppercase text-sm mb-4 block">
-            Fabricantes Directos
-          </span>
+          <Reveal type="fade-right" delay={0}>
+            {/* Etiqueta superior */}
+            <span className="text-[#F24424] font-bold tracking-widest uppercase text-sm mb-4 block">
+              Fabricantes Directos
+            </span>
           
           {/* Título Principal */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6">
             ARQUITECTURA MODULAR <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#C2523A]">PREMIUM</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#F24424]">PREMIUM</span>
           </h1>
-          
+
           {/* Subtítulo */}
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl font-sans">
             Diseñamos y construimos espacios eficientes, modernos y listos para habitar. 
             Respaldados por una planta de producción de 4.000 m² equipada con tecnología de punta.
           </p>
           
+          </Reveal>
+
           {/* Call to Action */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-start">
             <Button size="lg" className="w-full sm:w-auto text-md uppercase tracking-wider rounded-none" asChild>

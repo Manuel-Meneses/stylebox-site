@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react"
 
 // Links reales mapeados a los IDs de nuestras secciones
 const navLinks = [
-  { label: "Modelos", href: "#proyectos" },
+  { label: "Modelos", href: "/modelos" },
   { label: "La Fábrica", href: "#la-fabrica" },
   { label: "Ingeniería", href: "#materiales" },
   { label: "Contacto", href: "#contacto" },

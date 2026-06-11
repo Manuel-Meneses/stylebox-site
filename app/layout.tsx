@@ -1,6 +1,7 @@
 import { Syne, Manrope } from 'next/font/google'
 import "./globals.css"
 import WhatsAppButton from '@/components/whatsapp-button' // <-- Importá el botón
+import Footer from '@/components/footer'
 
 const syne = Syne({ 
   subsets: ['latin'], 
@@ -22,9 +23,8 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${syne.variable} ${manrope.variable} font-sans antialiased`}>
       <body>
-        {/* Aquí va tu ThemeProvider y tu Navbar actual */}
         {children}
-        
+        <Footer /> 
         {/* Componente flotante renderizado sobre todo el sitio */}
         <WhatsAppButton />
       </body>

@@ -5,13 +5,13 @@ import ProjectsSection from "@/components/projects-section"
 import CompactModels from "@/components/compact-models"
 import ApproachSection from "@/components/approach-section"
 import ContactSection from "@/components/contact-section"
-import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import Navbar from "@/components/navigation"
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      <Navigation />
+      <Navbar />
       {/* 1. Impacto visual y venta emocional */}
       <Hero />
       
@@ -33,7 +33,6 @@ export default function Home() {
       {/* 7. Cierre de venta, Formulario, Mapa y Redes */}
       <ContactSection />
 
-      <Footer />
     </main>
   )
 }

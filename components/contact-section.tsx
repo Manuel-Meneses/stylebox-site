@@ -55,7 +55,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <p className="text-sm font-bold tracking-widest text-zinc-500 uppercase mb-1">Planta de Producción</p>
-                  <p className="text-lg text-zinc-300 font-sans">Buenos Aires, Argentina<br/>(4.000 m² de infraestructura)</p>
+                  <p className="text-lg text-zinc-300 font-sans">Costasacate, Córdoba, Argentina<br/>(4.000 m² de infraestructura)</p>
                 </div>
               </div>
             </div>
@@ -95,18 +95,17 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Mapa interactivo Full-Width en escala de grises */}
-      <div className="w-full h-[400px] border-t border-zinc-800 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d821035.7865239556!2d-58.91893348616186!3d-34.603684439126426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA%2C%20Argentina!5e0!3m2!1sen!2s!4v1715870000000!5m2!1sen!2s" 
-          width="100%" 
-          height="100%" 
-          style={{ border: 0 }} 
-          allowFullScreen={false} 
-          loading="lazy" 
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
+     <div className="w-full h-[400px] border-t border-zinc-800 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+  <iframe 
+    src="https://maps.google.com/maps?q=Costa%20Sacate,%20C%C3%B3rdoba,%20Argentina&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+    width="100%" 
+    height="100%" 
+    style={{ border: 0 }} 
+    allowFullScreen={false} 
+    loading="lazy" 
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
 
     </section>
   )

@@ -2,8 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Maximize, BedDouble, Bath, LayoutTemplate } from "lucide-react"
-import Reveal from "./reveal"
-
 
 export default function ProjectsSection() {
   return (
@@ -34,11 +32,6 @@ export default function ProjectsSection() {
           
           {/* Columna Izquierda: Imagen del Proyecto */}
           <div className="lg:col-span-7 relative group overflow-hidden border border-zinc-800 bg-zinc-900 min-h-[400px] lg:min-h-[600px]">
-            
-            {/* ACÁ VA TU IMAGEN. 
-              1. Guardá tu foto en la carpeta `public` (ej: /public/modelo60.jpg)
-              2. Cambiá el src por "/modelo60.jpg"
-            */}
             <Image 
               src="/ref-60.jpg" 
               alt="Modelo 60 Metros Cuadrados - Stylebox"
@@ -59,7 +52,6 @@ export default function ProjectsSection() {
           <div className="lg:col-span-5 flex flex-col justify-between">
             
             <div className="grid grid-cols-2 gap-4 mb-8">
-              {/* Tarjetas de datos con hover interactivo hacia el color de marca */}
               <div className="group/card border border-zinc-800 p-6 flex flex-col items-start transition-all duration-300 hover:border-[#C2523A]/50 hover:bg-[#C2523A]/[0.02]">
                 <Maximize className="w-6 h-6 text-zinc-500 group-hover/card:text-[#C2523A] transition-colors mb-4" strokeWidth={1.5} />
                 <span className="text-2xl font-heading font-bold mb-1">12 x 4.8m</span>
@@ -85,22 +77,31 @@ export default function ProjectsSection() {
               </div>
             </div>
 
-            {/* Bloque de Precio y CTA */}
+            {/* Bloque de Precio y CTAs */}
             <div className="bg-zinc-900 border border-zinc-800 p-8 flex flex-col gap-6 mt-auto relative overflow-hidden">
-              {/* Resplandor sutil detrás del precio */}
               <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-[#C2523A] opacity-10 blur-2xl rounded-full"></div>
               
-              <div className="relative z-10">
+              <div className="relative z-10 mb-2">
                 <p className="text-sm text-zinc-400 uppercase tracking-wider mb-2">Valor Referencial</p>
                 <p className="text-4xl md:text-5xl font-heading font-bold text-white">$50.000.000 <span className="text-lg text-zinc-500 font-sans font-normal">ARS</span></p>
                 <p className="text-xs text-zinc-500 mt-2">*Precio base sujeto a modificaciones. No incluye flete ni instalación.</p>
               </div>
               
-              <Button size="lg" className="relative z-10 w-full text-md uppercase tracking-wider rounded-none bg-[#C2523A] hover:bg-[#a3442f] text-white py-6 transition-colors" asChild>
-                <Link href="https://wa.me/5491166085926?text=Hola,%20quisiera%20consultar%20sobre%20el%20Modelo%2060%20de%20arquitectura%20modular." target="_blank" rel="noopener noreferrer">
-                  Solicitar Cotización Exacta
-                </Link>
-              </Button>
+              {/* MAGIA DE CONVERSIÓN: Dos botones complementarios */}
+              <div className="relative z-10 flex flex-col xl:flex-row gap-4 w-full">
+                <Button size="lg" className="w-full xl:w-1/2 text-sm uppercase tracking-widest rounded-none bg-[#C2523A] hover:bg-[#a3442f] text-white py-6 transition-colors" asChild>
+                  <Link href="https://wa.me/5491166085926?text=Hola,%20quisiera%20consultar%20sobre%20el%20Modelo%2060%20de%20arquitectura%20modular." target="_blank" rel="noopener noreferrer">
+                    Cotizar Modelo
+                  </Link>
+                </Button>
+                
+                <Button size="lg" variant="outline" className="w-full xl:w-1/2 text-sm uppercase tracking-widest rounded-none bg-transparent border-zinc-600 text-white hover:bg-white hover:text-black py-6 transition-colors" asChild>
+                  <Link href="/modelos">
+                    Ver Showroom
+                  </Link>
+                </Button>
+              </div>
+
             </div>
 
           </div>

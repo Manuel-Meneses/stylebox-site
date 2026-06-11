@@ -97,7 +97,7 @@ export default function Footer() {
           </p>
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
             <p className="text-[11px] tracking-[0.1em] text-zinc-500 font-sans uppercase">
-              Buenos Aires, Argentina
+              Córdoba, Argentina
             </p>
             {/* Si querés agregar links legales, descomentá esto:
             <Link href="#" className="text-[11px] tracking-[0.1em] text-zinc-500 hover:text-white uppercase transition-colors">Privacidad</Link>
